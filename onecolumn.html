@@ -1,10 +1,40 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Services - Jay's Pawnshop</title>
+		<title>Store - Jay's Pawnshop</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* Simple product grid styling */
+			.products {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+				gap: 20px;
+			}
+			.product-card {
+				border: 1px solid #ccc;
+				border-radius: 8px;
+				padding: 15px;
+				text-align: center;
+				background: #fff;
+			}
+			.product-card img {
+				max-width: 100%;
+				height: auto;
+				border-radius: 6px;
+				margin-bottom: 10px;
+			}
+			.product-card h3 {
+				margin: 0;
+				font-size: 1.2em;
+			}
+			.product-card p {
+				margin: 5px 0 0;
+				font-weight: bold;
+				color: #333;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="page-wrapper">
@@ -14,18 +44,16 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-12">
-
 							<header id="header">
 								<h1><a href="index.html" id="logo">Jay's Pawnshop</a></h1>
 								<nav id="nav">
 									<a href="index.html">Home</a>
-									<a href="twocolumn1.html" class="current-page-item">Services</a>
+									<a href="twocolumn1.html">Services</a>
 									<a href="twocolumn2.html">Meet the Team</a>
-									<a href="onecolumn.html">Store</a>
+									<a href="onecolumn.html" class="current-page-item">Store</a>
 									<a href="threecolumn.html">About Us</a>
 								</nav>
 							</header>
-
 						</div>
 					</div>
 				</div>
@@ -35,71 +63,13 @@
 			<div id="main">
 				<div class="container">
 					<div class="row main-row">
-						<!-- Services Content -->
-						<div class="col-8 col-12-medium">
+						<div class="col-12">
 							<section>
-								<h2>Our Services</h2>
-								<p>At Jay’s Pawnshop, we provide fast, fair, and reliable services to meet your financial and shopping needs. Whether you need quick cash, want to sell unwanted items, or are searching for unique treasures at affordable prices—we’ve got you covered.</p>
-
-								<h3>Pawn Loans</h3>
-								<p>Need cash today? Bring in your valuables—such as jewelry, electronics, tools, or collectibles—and receive a confidential loan with no credit check. Your items are safely stored until you’re ready to redeem them.</p>
-
-								<h3>Buy & Sell</h3>
-								<p>We buy gold, silver, electronics, tools, and more at competitive rates. Looking to shop? Our store is stocked daily with quality merchandise at prices far below retail.</p>
-
-								<h3>Appraisals</h3>
-								<p>Our experts provide on-the-spot evaluations of jewelry, precious metals, and other valuables. You’ll always get a fair and honest appraisal—whether you’re pawning, selling, or just curious.</p>
-
-								<h3>Layaway Program</h3>
-								<p>Found something you love but want to pay over time? Ask about our layaway options—secure your item today with flexible payment plans that work for your budget.</p>
-
-								<h3>Special Deals</h3>
-								<p>We proudly offer discounts for military members, first responders, and loyal repeat customers. Ask our staff about current promotions and seasonal specials.</p>
-							</section>
-						</div>
-
-						<!-- Sidebar -->
-						<div class="col-4 col-12-medium">
-							<section>
-								<h2>Why Choose Us?</h2>
-								<ul class="small-image-list">
-									<li>
-										<a href="#"><img src="images/trust.jpg" alt="Trustworthy service" class="left" /></a>
-										<h4>Trusted Service</h4>
-										<p>Serving the community with honesty and fairness for years.</p>
-									</li>
-									<li>
-										<a href="#"><img src="images/value.jpg" alt="Best value" class="left" /></a>
-										<h4>Best Value</h4>
-										<p>We offer top dollar for your items and great deals in our store.</p>
-									</li>
-								</ul>
-							</section>
-
-							<section>
-								<h2>Quick Links</h2>
-								<div>
-									<div class="row">
-										<div class="col-6 col-12-small">
-											<ul class="link-list">
-												<li><a href="onecolumn.html">Shop Online</a></li>
-												<li><a href="twocolumn2.html">Meet Our Team</a></li>
-												<li><a href="threecolumn.html">About Us</a></li>
-												<li><a href="#">FAQs</a></li>
-												<li><a href="#">Contact Us</a></li>
-											</ul>
-										</div>
-										<div class="col-6 col-12-small">
-											<ul class="link-list">
-												<li><a href="#">Loan Calculator</a></li>
-												<li><a href="#">Sell Your Gold</a></li>
-												<li><a href="#">Store Hours</a></li>
-												<li><a href="#">Customer Reviews</a></li>
-												<li><a href="#">Special Discounts</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
+								<h2>Shop Our Store</h2>
+								<p>Browse our latest items. Each product listing is automatically generated below. Click on an item to learn more or purchase.</p>
+								
+								<!-- Product Grid -->
+								<div class="products" id="product-list"></div>
 							</section>
 						</div>
 					</div>
@@ -110,74 +80,14 @@
 			<div id="footer-wrapper">
 				<div class="container">
 					<div class="row">
-						<div class="col-8 col-12-medium">
-							<section>
-								<h2>More Resources</h2>
-								<div class="row">
-									<div class="col-3 col-6-medium col-12-small">
-										<ul class="link-list">
-											<li><a href="#">Pawn Loan Info</a></li>
-											<li><a href="#">Jewelry Appraisals</a></li>
-											<li><a href="#">Firearms Policy</a></li>
-											<li><a href="#">Gift Cards</a></li>
-											<li><a href="#">Return Policy</a></li>
-										</ul>
-									</div>
-									<div class="col-3 col-6-medium col-12-small">
-										<ul class="link-list">
-											<li><a href="#">Layaway Program</a></li>
-											<li><a href="#">Sell to Us</a></li>
-											<li><a href="#">Online Payments</a></li>
-											<li><a href="#">Store Hours</a></li>
-											<li><a href="#">Directions</a></li>
-										</ul>
-									</div>
-									<div class="col-3 col-6-medium col-12-small">
-										<ul class="link-list">
-											<li><a href="#">Community Outreach</a></li>
-											<li><a href="#">Special Discounts</a></li>
-											<li><a href="#">Careers</a></li>
-											<li><a href="#">Privacy Policy</a></li>
-											<li><a href="#">Terms & Conditions</a></li>
-										</ul>
-									</div>
-									<div class="col-3 col-6-medium col-12-small">
-										<ul class="link-list">
-											<li><a href="#">Customer Support</a></li>
-											<li><a href="#">FAQ</a></li>
-											<li><a href="#">Contact Form</a></li>
-											<li><a href="#">Newsletter Signup</a></li>
-											<li><a href="#">Live Chat</a></li>
-										</ul>
-									</div>
-								</div>
-							</section>
-						</div>
-
-						<div class="col-4 col-12-medium">
-							<section>
-								<h2>Visit Us</h2>
-								<p>123 Main Street<br />
-								Your City, State ZIP<br />
-								Phone: (555) 123-4567<br />
-								Email: info@jayspawnshop.com</p>
-								<footer class="controls">
-									<a href="https://maps.google.com" class="button">Get Directions</a>
-								</footer>
-							</section>
-						</div>
-					</div>
-
-					<div class="row">
 						<div class="col-12">
 							<div id="copyright">
-								&copy; Jay's Pawnshop. All rights reserved. @2025</a>
+								&copy; Jay's Pawnshop. All rights reserved. @2025
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 
 		<!-- Scripts -->
@@ -186,6 +96,28 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+
+		<!-- Product Auto Generation -->
+		<script>
+			// Example product data array
+			const products = [
+				{name: "Gold Ring", price: 150, image: "images/gold-ring.jpg"},
+				{name: "Laptop Dell XPS", price: 600, image: "images/dell-xps.jpg"},
+				{name: "Electric Guitar", price: 300, image: "images/guitar.jpg"},
+				{name: "Power Tools Set", price: 120, image: "images/tools.jpg"}
+			];
+
+			const container = document.getElementById("product-list");
+			products.forEach(item => {
+				const card = document.createElement("div");
+				card.className = "product-card";
+				card.innerHTML = `
+					<img src="${item.image}" alt="${item.name}">
+					<h3>${item.name}</h3>
+					<p>$${item.price}</p>
+				`;
+				container.appendChild(card);
+			});
+		</script>
 	</body>
 </html>
-
