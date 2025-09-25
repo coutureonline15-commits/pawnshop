@@ -1,54 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pawn Loan Calculator</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    .calculator { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
-    input, select, button { width: 100%; padding: 10px; margin: 5px 0; }
-    button { background: #333; color: white; border: none; cursor: pointer; }
-    button:hover { background: #555; }
-    .result { margin-top: 15px; font-weight: bold; }
-  </style>
+    <title>Loan Calculator - Jay's Pawnshop</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body>
-  <div class="calculator">
-    <h2>Pawn Loan Calculator</h2>
-    
-    <label for="amount">Loan Amount ($):</label>
-    <input type="number" id="amount" placeholder="Enter loan amount">
+    <div id="page-wrapper">
 
-    <label for="rate">Monthly Interest Rate (%):</label>
-    <input type="number" id="rate" placeholder="e.g. 15">
+        <!-- Header -->
+        <div id="header-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <header id="header">
+                            <h1><a href="index.html" id="logo">Jay's Pawnshop</a></h1>
+                            <nav id="nav">
+                                <a href="index.html">Home</a>
+                                <a href="twocolumn1.html">Services</a>
+                                <a href="onecolumn.html">Store</a>
+                                <a href="threecolumn.html">About Us</a>
+                                <a href="loancalculator.html" class="current-page-item">Loan Calculator</a>
+                            </nav>
+                        </header>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <label for="months">Loan Term (months):</label>
-    <input type="number" id="months" placeholder="e.g. 3">
+        <!-- Main -->
+        <div id="main">
+            <div class="container">
+                <div class="row main-row">
+                    <div class="col-12">
+                        <section>
+                            <h2>Pawn Loan Calculator</h2>
+                            <p>Use this tool to estimate your loan and pickup cost. All loans are for 30 days and the maximum loan amount is $10,000.</p>
+                            
+                            <form id="loanForm">
+                                <label for="loanAmount">Enter Loan Amount ($):</label>
+                                <input type="number" id="loanAmount" name="loanAmount" min="1" max="10000" required>
+                                <br><br>
+                                <button type="submit">Calculate</button>
+                            </form>
 
-    <button onclick="calculateLoan()">Calculate</button>
+                            <div id="results" style="margin-top:20px; display:none;">
+                                <h3>Loan Details</h3>
+                                <p><strong>Loan Amount:</strong> $<span id="loanOut"></span></p>
+                                <p><strong>Term:</strong> 30 days</p>
+                                <p><strong>Pickup Cost (130%):</strong> $<span id="pickupOut"></span></p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="result" id="result"></div>
-  </div>
+        <!-- Footer -->
+        <div id="footer-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div id="copyright">
+                            &copy; Jay's Pawnshop. All rights reserved.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <script>
-    function calculateLoan() {
-      let amount = parseFloat(document.getElementById('amount').value);
-      let rate = parseFloat(document.getElementById('rate').value) / 100;
-      let months = parseInt(document.getElementById('months').value);
+    </div>
 
-      if (isNaN(amount) || isNaN(rate) || isNaN(months)) {
-        document.getElementById('result').innerText = "Please enter valid values.";
-        return;
-      }
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
-      // Simple pawn formula: total owed = principal + (principal * rate * months)
-      let interest = amount * rate * months;
-      let total = amount + interest;
+    <!-- Loan Calculator Script -->
+    <script>
+        document.getElementById("loanForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            let loan = parseFloat(document.getElementById("loanAmount").value);
 
-      document.getElementById('result').innerText = 
-        `Interest: $${interest.toFixed(2)}\nTotal to Repay: $${total.toFixed(2)}`;
-    }
-  </script>
+            if (isNaN(loan) || loan <= 0) {
+                alert("Please enter a valid loan amount.");
+                return;
+            }
+            if (loan > 10000) {
+                alert("The maximum loan allowed is $10,000.");
+                loan = 10000;
+            }
+
+            let pickup = loan * 1.3;
+
+            document.getElementById("loanOut").textContent = loan.toFixed(2);
+            document.getElementById("pickupOut").textContent = pickup.toFixed(2);
+            document.getElementById("results").style.display = "block";
+        });
+    </script>
 </body>
 </html>
